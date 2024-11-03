@@ -7,25 +7,13 @@ import (
 	"strconv"
 	"strings"
 
-	"os"
-	"path"
-	"runtime"
+	"github.com/suic86/aoc-go/util"
 )
 
 func main() {
-	fmt.Printf("Part 01: %v", part1(func() string {
-		_, filename, _, ok := runtime.Caller(1)
-		if !ok {
-			panic("Could not find Caller of util.ReadFile")
-		}
-		absPath := path.Join(path.Dir(filename), "input.data")
-		content, err := os.ReadFile(absPath)
-		if err != nil {
-			panic(err)
-		}
-		strContent := string(content)
-		return strings.TrimRight(strContent, "\n")
-	}()))
+	data := util.ReadFile("input.data")
+	fmt.Printf("Part 01: %v\n", part1(data))
+	fmt.Printf("Part 02: %v\n", part2(data))
 }
 
 var lineParser = regexp.MustCompile(`^(\d+)-(\d+) ([a-z]): ([a-z]+)$`)
