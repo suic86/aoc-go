@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/suic86/aoc-go/util"
 	"strconv"
 	"strings"
+
+	"github.com/suic86/aoc-go/util"
 )
 
 func main() {
