@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/suic86/aoc-go/util"
 	"testing"
+
+	"github.com/suic86/aoc-go/util"
 )
 
 var tests1 = []struct {
