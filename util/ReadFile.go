@@ -24,8 +24,8 @@ func ReadFileToStringArray(pathFromCaller string) []string {
 
 	var lines []string
 
-	scanner:= bufio.NewScanner(file)
-	for scanner.Scan(){
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
 	if err := scanner.Err(); err != nil {
