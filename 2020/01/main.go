@@ -10,8 +10,8 @@ import (
 
 func main() {
 	input := util.ReadFile("input.data")
-	fmt.Println("Solution 01: %i", part1(input))
-	fmt.Println("Solution 02: %i", part2(input))
+	fmt.Printf("Solution 01: %v\n", part1(input))
+	fmt.Printf("Solution 02: %v\n", part2(input))
 }
 
 func part1(input string) int {
@@ -29,9 +29,9 @@ func part1(input string) int {
 func part2(input string) int {
 	ns := parseInput(input)
 	ln := len(ns)
-	for i := 0; i < ln; i++ {
+	for i := range ln {
 		for j := i + 1; j < ln; j++ {
-			for k := 0; k < ln; k++ {
+			for k := range ln {
 				if ns[i]+ns[j]+ns[k] == 2020 {
 					return ns[i] * ns[j] * ns[k]
 				}
