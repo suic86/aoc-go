@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"strconv"
 	"strings"
@@ -10,13 +11,13 @@ import (
 
 func main() {
 	input := util.ReadFile("input.data")
-	fmt.Println("Solution 01: %i", part1(input))
-	fmt.Println("Solution 02: %i", part2(input))
+	fmt.Printf("Solution 01: %v\n", part1(input))
+	fmt.Printf("Solution 02: %v\n", part2(input))
 }
 
 func part1(input string) int {
-	seen := map[int]bool{}
 	ns := parseInput(input)
+	seen := map[int]bool{}
 	for _, n := range ns {
 		if seen[n] {
 			return n * (2020 - n)
@@ -29,9 +30,9 @@ func part1(input string) int {
 func part2(input string) int {
 	ns := parseInput(input)
 	ln := len(ns)
-	for i := 0; i < ln; i++ {
+	for i := range ln {
 		for j := i + 1; j < ln; j++ {
-			for k := 0; k < ln; k++ {
+			for k := range ln {
 				if ns[i]+ns[j]+ns[k] == 2020 {
 					return ns[i] * ns[j] * ns[k]
 				}
@@ -43,10 +44,10 @@ func part2(input string) int {
 }
 
 func parseInput(input string) []int {
-	lines := strings.Split(input, "\n")
+	sc := bufio.NewScanner(strings.NewReader(input))
 	nums := []int{}
-	for _, l := range lines {
-		n, err := strconv.Atoi(l)
+	for sc.Scan() {
+		n, err := strconv.Atoi(sc.Text())
 		if err != nil {
 			panic(err)
 		}
